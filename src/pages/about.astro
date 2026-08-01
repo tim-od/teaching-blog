@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="About"
+  description="Who's behind Second Chalk, and why this blog exists."
+>
+  <section class="about-hero">
+    <div class="about-photo"></div>
+    <div class="about-text">
+      <span class="eyebrow">Who's writing this</span>
+      <h1>Hi, I'm [Name]</h1>
+      <p>
+        I spent years building a career I was good at but no longer loved.
+        Now I'm a couple of years into teaching, and this blog is the honest,
+        practical account of that move — for anyone else in the UK weighing
+        up the same decision.
+      </p>
+      <p>
+        Here you'll find the different routes into teaching, the questions
+        and doubts that come with a big career change, and the day-to-day
+        reality of the classroom — written the way I wish someone had
+        written it for me.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-hero {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 80px 24px 100px;
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+  }
+  .about-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #E8A93D, #A84B32);
+    flex-shrink: 0;
+  }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--brick);
+    margin-bottom: 10px;
+    display: block;
+  }
+  h1 { font-family: 'Fraunces', serif; font-size: 34px; margin: 0 0 18px; color: var(--ink); }
+  .about-text p { font-size: 16px; line-height: 1.7; color: var(--ink-soft); margin: 0 0 18px; }
+  @media (max-width: 600px) {
+    .about-hero { flex-direction: column; align-items: center; text-align: center; padding: 60px 24px 80px; }
+  }
+</style>

@@ -1,0 +1,38 @@
+---
+---
+<nav>
+  <a href="/" class="brand">Second Chalk</a>
+  <div class="navlinks">
+    <a href="/tags/routes-in">Routes into Teaching</a>
+    <a href="/tags/my-journey">My Journey</a>
+    <a href="/tags/should-you-move">Should You Move?</a>
+    <a href="/tags/practical-advice">Practical Advice</a>
+    <a href="/tags/classroom-life">Classroom Life</a>
+  </div>
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 48px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+  }
+  .brand {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--marker-soft);
+  }
+  .navlinks { display: flex; gap: 28px; align-items: center; }
+  .navlinks a { opacity: 0.85; }
+  .navlinks a:hover { opacity: 1; color: var(--marker-soft); }
+  @media (max-width: 860px) {
+    nav { padding: 18px 22px; }
+    .navlinks { display: none; }
+  }
+</style>

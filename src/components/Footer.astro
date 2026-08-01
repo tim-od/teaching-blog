@@ -1,0 +1,41 @@
+---
+---
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand">Second Chalk</span>
+      <p>Honest notes on swapping a first career for a classroom, for anyone in the UK considering the same move.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Site</h4>
+      <ul><li><a href="/about">About</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h4>Partners &amp; Resources</h4>
+      <ul>
+        <li><a href="https://getintoteaching.education.gov.uk" target="_blank" rel="noopener">Get Into Teaching (DfE)</a></li>
+        <li><a href="https://www.ucas.com/teacher-training" target="_blank" rel="noopener">UCAS Teacher Training</a></li>
+        <li><a href="https://www.teachfirst.org.uk" target="_blank" rel="noopener">Teach First</a></li>
+        <li><a href="#" target="_blank" rel="noopener">National College</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Second Chalk</span>
+    <span>Built with Astro</span>
+  </div>
+</footer>
+
+<style>
+  footer { background: var(--ink); color: var(--paper); padding: 54px 48px 36px; }
+  .footer-inner { max-width: 1120px; margin: 0 auto; display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+  .footer-brand { max-width: 280px; }
+  .footer-brand .brand { color: var(--marker-soft); font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; margin-bottom: 10px; display: inline-block; }
+  .footer-brand p { font-size: 13.5px; line-height: 1.6; color: #B7BFD1; margin: 0; }
+  .footer-col h4 { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--marker-soft); margin: 0 0 16px; font-weight: 500; }
+  .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col a { font-size: 14px; color: #D9DEEA; }
+  .footer-col a:hover { color: var(--marker-soft); }
+  .footer-bottom { max-width: 1120px; margin: 44px auto 0; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.12); font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: #8B93A8; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  @media (max-width: 860px) { .footer-inner { flex-direction: column; gap: 30px; } }
+</style>
