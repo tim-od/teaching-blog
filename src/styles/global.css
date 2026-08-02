@@ -5,8 +5,9 @@
   --paper-deep: #EFE8D6;
   --marker: #E8A93D;
   --marker-soft: #F3D48C;
-  --brick: #A84B32;
+  --brick: #8F3D28;
   --line: #DCD3B8;
+  --date-text: #6B5F45;
 }
 
 * { box-sizing: border-box; }
