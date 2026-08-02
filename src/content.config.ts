@@ -16,7 +16,10 @@ const posts = defineCollection({
     ])),
     heroImage: image().optional(),
     heroImageAlt: z.string().optional(),
-  }),
+  }).refine(
+    (data) => !data.heroImage || (data.heroImageAlt && data.heroImageAlt.trim().length > 0),
+    { message: 'heroImageAlt is required whenever heroImage is set', path: ['heroImageAlt'] }
+  ),
 });
 
 export const collections = { posts };
