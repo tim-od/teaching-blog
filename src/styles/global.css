@@ -17,6 +17,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: 'Public Sans', sans-serif;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
 
