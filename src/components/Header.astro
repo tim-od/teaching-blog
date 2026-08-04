@@ -1,7 +1,10 @@
 ---
 ---
 <nav>
-  <a href="/" class="brand">Second Bell</a>
+  <a href="/" class="brand">
+    <span>Second Bell</span>
+    <img src="/second-bell-icon.svg" alt="" width="28" height="28" class="brand-icon" />
+  </a>
   <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
     <span></span>
     <span></span>
@@ -30,10 +33,17 @@
     z-index: 100;
   }
   .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     font-family: 'Fraunces', serif;
     font-size: 20px;
     font-weight: 600;
     color: var(--marker-soft);
+  }
+  .brand-icon {
+    display: block;
+    flex-shrink: 0;
   }
   .navlinks { display: flex; gap: 28px; align-items: center; }
   .navlinks a { opacity: 0.85; }
