@@ -23,3 +23,6 @@ Enough of that kind of thing. Life is too short. Time to remember what it was th
 ## What will the site contain
 I'm trying to be careful not to get **too** ambitious too early. For now there will be 2 things: some factual resources to help point the way to those who are considering a similar path, and some opinionated things that I think are helpful to go along with that (sometimes these official guides can be a bit **too** politely impartial; people in our position need to understnad the implications of some of the available choices, and usually appreciate a clearly stated opinion, if only to give them something to disagree with ;-) ) 
 
+### One last thing
+To test here
+
