@@ -29,8 +29,7 @@ const { Content } = await render(post);
         <Image
           src={post.data.heroImage}
           alt={post.data.heroImageAlt || ""}
-          width={1200}
-          height={500}
+          layout="full-width"
           class="hero-image"
         />
       )
@@ -64,10 +63,12 @@ const { Content } = await render(post);
 
 <style>
   .hero-image {
-    width: 100%;
-    height: 420px;
-    object-fit: cover;
     display: block;
+    width: 100%;
+    height: auto;
+    max-height: 650px;
+    object-fit: contain;
+    background: var(--paper-deep);
   }
   .post-wrap {
     max-width: 700px;
@@ -147,7 +148,7 @@ const { Content } = await render(post);
       font-size: 30px;
     }
     .hero-image {
-      height: 260px;
+      max-height: none;
     }
   }
 </style>
