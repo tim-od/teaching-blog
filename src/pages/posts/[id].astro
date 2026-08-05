@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import { Image } from "astro:assets";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import TableOfContents from "../../components/TableOfContents.astro";
 
 function slugify(tag) {
   return tag
@@ -19,7 +20,7 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 ---
 
 <BaseLayout title={post.data.title} description={post.data.description}>
@@ -55,6 +56,7 @@ const { Content } = await render(post);
         }</time
       >
       <div class="content">
+        <TableOfContents headings={headings} />
         <Content />
       </div>
     </div>
@@ -149,6 +151,19 @@ const { Content } = await render(post);
     }
     .hero-image {
       max-height: none;
+    }
+  }
+  .content :global(h2),
+  .content :global(h3) {
+    scroll-margin-top: 100px;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
     }
   }
 </style>
