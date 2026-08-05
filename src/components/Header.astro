@@ -1,9 +1,17 @@
 ---
+
 ---
+
 <nav>
   <a href="/" class="brand">
     <span>Second Bell</span>
-    <img src="/second-bell-icon.svg" alt="" width="28" height="28" class="brand-icon" />
+    <img
+      src="/second-bell-icon.svg"
+      alt=""
+      width="28"
+      height="28"
+      class="brand-icon"
+    />
   </a>
   <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
     <span></span>
@@ -27,7 +35,7 @@
     padding: 22px 48px;
     background: var(--ink);
     color: var(--paper);
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: "IBM Plex Mono", monospace;
     font-size: 13px;
     position: relative;
     z-index: 100;
@@ -36,7 +44,7 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    font-family: 'Fraunces', serif;
+    font-family: "Fraunces", serif;
     font-size: 20px;
     font-weight: 600;
     color: var(--marker-soft);
@@ -45,9 +53,18 @@
     display: block;
     flex-shrink: 0;
   }
-  .navlinks { display: flex; gap: 28px; align-items: center; }
-  .navlinks a { opacity: 0.85; }
-  .navlinks a:hover { opacity: 1; color: var(--marker-soft); }
+  .navlinks {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+  }
+  .navlinks a {
+    opacity: 0.85;
+  }
+  .navlinks a:hover {
+    opacity: 1;
+    color: var(--marker-soft);
+  }
 
   .menu-toggle {
     display: none;
@@ -66,15 +83,27 @@
     width: 100%;
     height: 2px;
     background: var(--marker-soft);
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
   }
-  .menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .menu-toggle.open span:nth-child(2) { opacity: 0; }
-  .menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .menu-toggle.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
 
   @media (max-width: 860px) {
-    nav { padding: 18px 22px; }
-    .menu-toggle { display: flex; }
+    nav {
+      padding: 18px 22px;
+    }
+    .menu-toggle {
+      display: flex;
+    }
     .navlinks {
       display: none;
       position: absolute;
@@ -85,25 +114,17 @@
       align-items: flex-start;
       gap: 0;
       background: var(--ink);
-      border-top: 1px solid rgba(255,255,255,0.12);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
       z-index: 100;
     }
-    .navlinks.open { display: flex; }
+    .navlinks.open {
+      display: flex;
+    }
     .navlinks a {
       width: 100%;
       padding: 16px 22px;
       box-sizing: border-box;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
   }
 </style>
-
-<script>
-  const toggle = document.querySelector('.menu-toggle');
-  const links = document.querySelector('.navlinks');
-  toggle?.addEventListener('click', () => {
-    const isOpen = links?.classList.toggle('open');
-    toggle.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  });
-</script>
