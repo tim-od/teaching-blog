@@ -17,13 +17,13 @@ const tocHeadings = headings.filter(
     <nav class="table-of-contents" aria-labelledby="toc-heading">
       <h2 id="toc-heading">In this article</h2>
 
-      <ol>
+      <ul>
         {tocHeadings.map((heading) => (
           <li class:list={{ nested: heading.depth === 3 }}>
             <a href={`#${heading.slug}`}>{heading.text}</a>
           </li>
         ))}
-      </ol>
+      </ul>
     </nav>
   )
 }
@@ -43,9 +43,10 @@ const tocHeadings = headings.filter(
     font-size: 20px;
   }
 
-  .table-of-contents ol {
+  .table-of-contents ul {
     margin: 0;
-    padding-left: 22px;
+    padding: 0;
+    list-style: none;
   }
 
   .table-of-contents li {
