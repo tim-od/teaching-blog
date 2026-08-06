@@ -1,0 +1,84 @@
+---
+import type { MarkdownHeading } from "astro";
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+const { headings } = Astro.props;
+
+const tocHeadings = headings.filter(
+  (heading) => heading.depth === 2 || heading.depth === 3,
+);
+---
+
+{
+  tocHeadings.length >= 0 && (
+    <nav class="table-of-contents" aria-labelledby="toc-heading">
+      <h2 id="toc-heading">In this article</h2>
+
+      <ol>
+        {tocHeadings.map((heading) => (
+          <li class:list={{ nested: heading.depth === 3 }}>
+            <a href={`#${heading.slug}`}>{heading.text}</a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  )
+}
+
+<style>
+  .table-of-contents {
+    margin: 0;
+    padding: 20px;
+    background: var(--paper-deep);
+    border-left: 4px solid var(--marker);
+    border-radius: 4px;
+  }
+
+  .table-of-contents h2 {
+    margin: 0 0 14px;
+    font-family: "Fraunces", serif;
+    font-size: 20px;
+  }
+
+  .table-of-contents ol {
+    margin: 0;
+    padding-left: 22px;
+  }
+
+  .table-of-contents li {
+    margin: 8px 0;
+  }
+
+  .table-of-contents li.nested {
+    margin-left: 20px;
+    font-size: 0.95em;
+  }
+
+  .table-of-contents a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .table-of-contents a:hover {
+    color: var(--brick);
+    text-decoration: underline;
+  }
+
+  .table-of-contents a:focus-visible {
+    outline: 3px solid var(--marker);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 600px) {
+    .table-of-contents {
+      padding: 20px;
+    }
+
+    .table-of-contents li.nested {
+      margin-left: 10px;
+    }
+  }
+</style>

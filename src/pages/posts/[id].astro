@@ -55,9 +55,14 @@ const { Content, headings } = await render(post);
           })
         }</time
       >
-      <div class="content">
-        <TableOfContents headings={headings} />
-        <Content />
+      <div class="post-layout">
+        <article class="content">
+          <Content />
+        </article>
+
+        <aside class="toc-sidebar" aria-label="Table of contents">
+          <TableOfContents headings={headings} />
+        </aside>
       </div>
     </div>
   </article>
@@ -73,7 +78,7 @@ const { Content, headings } = await render(post);
     background: var(--paper-deep);
   }
   .post-wrap {
-    max-width: 700px;
+    max-width: 1080px;
     margin: 0 auto;
     padding: 50px 24px 100px;
   }
@@ -164,6 +169,48 @@ const { Content, headings } = await render(post);
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
+    }
+  }
+  .post-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 700px) 240px;
+    justify-content: center;
+    align-items: start;
+    gap: 48px;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .content {
+    min-width: 0;
+  }
+
+  .toc-sidebar {
+    position: sticky;
+    top: 100px;
+    align-self: start;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+  }
+  @media (max-width: 900px) {
+    .post-layout {
+      display: flex;
+      flex-direction: column;
+      max-width: 700px;
+      gap: 24px;
+    }
+
+    .toc-sidebar {
+      position: static;
+      order: -1;
+      width: 100%;
+      max-height: none;
+      overflow: visible;
+    }
+
+    .content {
+      width: 100%;
     }
   }
 </style>
