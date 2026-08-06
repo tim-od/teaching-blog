@@ -1,82 +1,246 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
-import { Image } from 'astro:assets';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 
-const allPosts = await getCollection('posts');
+const allPosts = await getCollection("posts");
 const sortedPosts = allPosts.sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
-const tags = ['Routes In', 'My Journey', 'Should You Move?', 'Practical Advice', 'Classroom Life'];
+const tags = [
+  "Routes In",
+  "My Journey",
+  "Should You Move?",
+  "Practical Advice",
+  "Classroom Life",
+];
 
-function slugify(tag) {
-  return tag.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+function slugify(tag: string) {
+  return tag
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
 }
 ---
+
 <BaseLayout
   title="Home"
   description="A career-change blog for UK professionals considering a move into teaching."
 >
   <section class="hero">
     <div class="hero-eyebrow">A career-change blog for future teachers</div>
-    <h1>From boardroom to classroom, and everything <span class="mark">nobody tells you<svg viewBox="0 0 300 18" preserveAspectRatio="none"><path d="M2,12 C60,4 240,4 298,12" stroke="#E8A93D" stroke-width="7" fill="none" stroke-linecap="round"/></svg></span></h1>
-    <p>I swapped a career for a classroom of thirty Year 9s. This is the honest, occasionally chaotic story of how — and a practical guide for anyone weighing up the same jump.</p>
+    <h1>
+      From boardroom to classroom, and everything <span class="mark"
+        >nobody tells you<svg viewBox="0 0 300 18" preserveAspectRatio="none"
+          ><path
+            d="M2,12 C60,4 240,4 298,12"
+            stroke="#E8A93D"
+            stroke-width="7"
+            fill="none"
+            stroke-linecap="round"></path></svg
+        ></span>
+    </h1>
+    <p>
+      I swapped a career for a classroom of thirty Year 9s. This is the honest,
+      occasionally chaotic story of how — and a practical guide for anyone
+      weighing up the same jump.
+    </p>
   </section>
 
   <div class="intro">
-    <p>Teaching isn't a leap of faith. It's a series of decisions — here's what I wish someone had told me before I made mine.</p>
+    <p>
+      Teaching isn't a leap of faith. It's a series of decisions — here's what I
+      wish someone had told me before I made mine.
+    </p>
   </div>
 
   <div class="tagrow">
-    {tags.map(tag => <a href={`/tags/${slugify(tag)}`} class="tag">{tag}</a>)}
+    {
+      tags.map((tag) => (
+        <a href={`/tags/${slugify(tag)}`} class="tag">
+          {tag}
+        </a>
+      ))
+    }
   </div>
 
   <div class="grid">
-    {sortedPosts.map(post => (
-      <a href={`/posts/${post.id}/`} class="card">
-        {post.data.heroImage && (
-          <Image src={post.data.heroImage} alt={post.data.heroImageAlt || ''} width={400} height={220} class="card-img" />
-        )}
-        <div class="card-body">
-          <span class="card-tag">{post.data.tags[0]}</span>
-          <h3>{post.data.title}</h3>
-          <p>{post.data.description}</p>
-          <span class="card-date">{post.data.pubDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
-        </div>
-      </a>
-    ))}
+    {
+      sortedPosts.map((post) => (
+        <a href={`/posts/${post.id}/`} class="card">
+          {post.data.heroImage && (
+            <Image
+              src={post.data.heroImage}
+              alt={post.data.heroImageAlt || ""}
+              width={400}
+              height={220}
+              class="card-img"
+            />
+          )}
+          <div class="card-body">
+            <span class="card-tag">{post.data.tags[0]}</span>
+            <h3>{post.data.title}</h3>
+            <p>{post.data.description}</p>
+            <span class="card-date">
+              {post.data.pubDate.toLocaleDateString("en-GB", {
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+              })}
+            </span>
+          </div>
+        </a>
+      ))
+    }
   </div>
 </BaseLayout>
 
 <style>
-  .hero { background: var(--ink); color: var(--paper); padding: 90px 48px 110px; }
-  .hero-eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--marker-soft); margin-bottom: 22px; }
-  .hero h1 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 58px; line-height: 1.08; max-width: 780px; margin: 0 0 28px; }
-  .hero h1 .mark { position: relative; display: inline-block; }
-  .hero h1 .mark svg { position: absolute; left: -2%; bottom: -6px; width: 104%; height: 18px; }
-  .hero p { max-width: 560px; font-size: 18px; line-height: 1.6; color: #D9DEEA; margin: 0; }
+  .hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 90px 48px 110px;
+  }
+  .hero-eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--marker-soft);
+    margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 58px;
+    line-height: 1.08;
+    max-width: 780px;
+    margin: 0 0 28px;
+  }
+  .hero h1 .mark {
+    position: relative;
+    display: inline-block;
+  }
+  .hero h1 .mark svg {
+    position: absolute;
+    left: -2%;
+    bottom: -6px;
+    width: 104%;
+    height: 18px;
+  }
+  .hero p {
+    max-width: 560px;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #d9deea;
+    margin: 0;
+  }
 
-  .intro { max-width: 700px; margin: 0 auto; padding: 56px 48px 20px; text-align: center; }
-  .intro p { font-family: 'Fraunces', serif; font-size: 21px; line-height: 1.55; color: var(--ink-soft); }
+  .intro {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 48px 20px;
+    text-align: center;
+  }
+  .intro p {
+    font-family: "Fraunces", serif;
+    font-size: 21px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
 
-  .tagrow { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; padding: 30px 48px 10px; }
-  .tag { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; padding: 6px 13px; border: 1.5px dashed var(--brick); color: var(--brick); border-radius: 3px; background: rgba(168,75,50,0.04); }
-  .tag:hover { background: var(--brick); color: var(--paper); }
+  .tagrow {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 30px 48px 10px;
+  }
+  .tag {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 6px 13px;
+    border: 1.5px dashed var(--brick);
+    color: var(--brick);
+    border-radius: 3px;
+    background: rgba(168, 75, 50, 0.04);
+  }
+  .tag:hover {
+    background: var(--brick);
+    color: var(--paper);
+  }
 
-  .grid { max-width: 1120px; margin: 0 auto; padding: 40px 48px 100px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px; }
-  .card { background: var(--paper-deep); border-radius: 4px; overflow: hidden; border: 1px solid var(--line); display: block; }
-  .card-img { width: 100%; height: 160px; object-fit: cover; display: block; }
-  .card-body { padding: 20px 22px 26px; }
-  .card-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--brick); margin-bottom: 10px; display: block; }
-  .card h3 { font-family: 'Fraunces', serif; font-size: 21px; font-weight: 600; line-height: 1.25; margin: 0 0 10px; color: var(--ink); }
-  .card p { font-size: 14.5px; line-height: 1.55; color: var(--ink-soft); margin: 0 0 14px; }
-  .card-date { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--date-text); }
+  .grid {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 40px 48px 100px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 34px;
+  }
+  .card {
+    background: var(--paper-deep);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    display: block;
+  }
+  .card-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+  }
+  .card-body {
+    padding: 20px 22px 26px;
+  }
+  .card-tag {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--brick);
+    margin-bottom: 10px;
+    display: block;
+  }
+  .card h3 {
+    font-family: "Fraunces", serif;
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 1.25;
+    margin: 0 0 10px;
+    color: var(--ink);
+  }
+  .card p {
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+  }
+  .card-date {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    color: var(--date-text);
+  }
 
   @media (max-width: 860px) {
-    .hero h1 { font-size: 38px; }
-    .grid { grid-template-columns: 1fr; }
-    .hero { padding: 60px 24px 80px; }
-    .intro, .tagrow, .grid { padding-left: 24px; padding-right: 24px; }
+    .hero h1 {
+      font-size: 38px;
+    }
+    .grid {
+      grid-template-columns: 1fr;
+    }
+    .hero {
+      padding: 60px 24px 80px;
+    }
+    .intro,
+    .tagrow,
+    .grid {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
   }
 </style>

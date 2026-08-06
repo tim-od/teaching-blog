@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import TableOfContents from "../../components/TableOfContents.astro";
 
-function slugify(tag) {
+function slugify(tag: string) {
   return tag
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
